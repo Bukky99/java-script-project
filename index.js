@@ -1,10 +1,3 @@
-
-const quizContainer = document.getElementById('quiz');
-const resultsContainer = document.getElementById('results');
-const submitButton = document.getElementById('submit');
-
-console.log(quizContainer);
-
 function buildQuiz(questions, quizContainer, resultsContainer, submitButton) {
 
     //nested function known as a helper function: a function within a function
@@ -35,7 +28,6 @@ function buildQuiz(questions, quizContainer, resultsContainer, submitButton) {
                 );
             }
 
-
             //adds current question and its chosen answer to output
             output.push(
                 '< div class = "question">' + questions[i].question + '</div>'
@@ -44,13 +36,20 @@ function buildQuiz(questions, quizContainer, resultsContainer, submitButton) {
         }
 
         //outputs the whole quiz plus the embedded html from js to the html file
-        quizContainer.innerHTML = output.join(' ');
+        quizContainer.innerHTML = output.join(' '); 
+
+
+        //document.querySelector('quiz').append(quizContainer)
+
+        
 
         //This is the end of the showQuestions Funtion
     };
     
-
+    const questions = getElementById("quiz");
+    
     showQuestions(questions, quizContainer); // calling the funciton
+    
 
     function showResults(questions, quizContainer, resultsContainer) {
 
@@ -63,7 +62,7 @@ function buildQuiz(questions, quizContainer, resultsContainer, submitButton) {
 
         for(var i = 0; i < question.length; i++) {
 
-            userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value; // the two line "||" means OR, which means that either a selected answer will be returned OR an empty array/object
+            const userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value; // the two line "||" means OR, which means that either a selected answer will be returned OR an empty array/object
 
             if(userAnswer === questions[i].correctAnswer){
 
@@ -89,8 +88,14 @@ function buildQuiz(questions, quizContainer, resultsContainer, submitButton) {
         showResults(questions, quizContainer, resultsContainer);
     };
 
+
     // this is the end of the buildQuiz function
 };
+
+
+const quizContainer = document.getElementById('quiz');
+const resultsContainer = document.getElementById('results');
+const submitButton = document.getElementById('submit');
 
     const myQuestions = [ 
         {
